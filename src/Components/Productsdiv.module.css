@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    margin: 20px 30px;
+    padding: 2px;
+    border: 1px solid silver;
+    background-color: #fff;
+    border-radius: 10px;
+    transition: all .1s ease-in;
+}
+.container:hover{
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.079);
+}
+.container a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    background-color:rgba(128, 128, 128, 0.466) ;
+    padding: 2px;
+    border-radius: 5px;
+}
+.container a:hover {
+    width: 50px;
+}
+.image{
+    width:180px;
+    height: 150px;
+}

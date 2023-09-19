@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route , Routes ,Navigate} from "react-router-dom";
 
-function App() {
+// context
+import ApiContext from './Context/ApiContext';
+
+// Components
+import Shop from './Components/Shop';
+import Productdetails from './Components/Productdetails';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApiContext>
+      <Routes>
+        <Route path="/products" element={<Shop />} />
+        <Route path="/products/:id" element={<Productdetails />} />
+        <Route path="/*" element={<Navigate to="/products"/>} />
+      </Routes>
+    </ApiContext>
   );
-}
+};
 
 export default App;
