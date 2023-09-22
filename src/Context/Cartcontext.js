@@ -18,8 +18,14 @@ const reducer = (state,action) => {
             ...state,
             selectedItems:[...state.selectedItems]
            }
-        default:
-            return state
+        case"Increase":
+           const indexI = state.selectedItems.findIndex(
+            item => item.id === action.payload.id
+           )
+           state.selectedItems[indexI].quantity++
+           return{
+            ...state,
+           }
     }
 }
 

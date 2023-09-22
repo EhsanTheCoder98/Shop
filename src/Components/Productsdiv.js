@@ -4,14 +4,14 @@ import styles from "./Productsdiv.module.css";
 
 
 // Helpers
-import { shorten } from '../Helpers/functions';
+import { isInCart, shorten } from '../Helpers/functions';
 
 // Context
 import { CartContextPro } from '../Context/Cartcontext';
 
 
 const Productsdiv = ({data}) => {
-    const {dispatch} = useContext(CartContextPro);
+    const {state,dispatch} = useContext(CartContextPro);
     return (
         <div className={styles.container}>
             <img src={data.image} alt='product' className={styles.image}/>
@@ -19,7 +19,11 @@ const Productsdiv = ({data}) => {
             <Link   to={`/products/${data.id}`}>Details</Link>
             <span>Price:{data.price}$</span>
             <div>
-                <button onClick={()=>dispatch({type:"Add_Item",payload:data})}>Add To Cart</button>
+                {
+                    isInCart(state,data.id)?
+                        <button onClick={()=>dispatch({type:"Increase",payload:data})}>+</button>:
+                        <button onClick={()=>dispatch({type:"Add_Item",payload:data})}>Add To Cart</button>
+                }
             </div>
         </div>
     );

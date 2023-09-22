@@ -3,4 +3,9 @@ const shorten = (title) => {
     return `${newTitle[0]} ${newTitle[1]}`;
 }
 
-export {shorten}
+const isInCart = (state,id) => {
+    const result = !!state.selectedItems.find(item => item.id ===id);
+    return result;
+}
+
+export {shorten,isInCart}
