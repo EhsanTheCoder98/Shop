@@ -26,6 +26,20 @@ const reducer = (state,action) => {
            return{
             ...state,
            }
+        case"Decrease":
+            const indexD = state.selectedItems.findIndex(
+                item => item.id === action.payload.id
+            )
+            state.selectedItems[indexD].quantity--
+            return{
+                ...state,
+            }
+        case"Remove":
+            const newSelected = state.selectedItems.filter(item => item.id !== action.payload.id);
+            state.selectedItems = [...newSelected];
+            return{
+                ...state
+            }
     }
 }
 

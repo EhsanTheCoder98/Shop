@@ -4,7 +4,7 @@ import styles from "./Productsdiv.module.css";
 
 
 // Helpers
-import { isInCart, shorten } from '../Helpers/functions';
+import { isInCart, quantityCount, shorten } from '../Helpers/functions';
 
 // Context
 import { CartContextPro } from '../Context/Cartcontext';
@@ -23,6 +23,14 @@ const Productsdiv = ({data}) => {
                     isInCart(state,data.id)?
                         <button onClick={()=>dispatch({type:"Increase",payload:data})}>+</button>:
                         <button onClick={()=>dispatch({type:"Add_Item",payload:data})}>Add To Cart</button>
+                }
+                {
+                    quantityCount(state,data.id) === 1 &&
+                    <button onClick={()=>dispatch({type:"Remove",payload:data})}>REMOVE</button>
+                }
+                {
+                     quantityCount(state,data.id) > 1 &&
+                     <button onClick={()=>dispatch({type:"Decrease",payload:data})}>-</button>
                 }
             </div>
         </div>
