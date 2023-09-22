@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route , Routes ,Navigate} from "react-router-dom";
+import "./App.css" ;
 
 // context
 import ApiContext from './Context/ApiContext';

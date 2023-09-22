@@ -18,19 +18,22 @@ const Productsdiv = ({data}) => {
             <h2>{shorten(data.title)}</h2>
             <Link   to={`/products/${data.id}`}>Details</Link>
             <span>Price:{data.price}$</span>
-            <div>
+            <div className={styles.buttonContainer}>
                 {
                     isInCart(state,data.id)?
-                        <button onClick={()=>dispatch({type:"Increase",payload:data})}>+</button>:
+                        <button onClick={()=>dispatch({type:"Increase",payload:data})} style={{width:"30px"}}>+</button>:
                         <button onClick={()=>dispatch({type:"Add_Item",payload:data})}>Add To Cart</button>
                 }
                 {
+                    quantityCount(state,data.id) > 0 && <div    className={styles.spanContainer}><sapn>{quantityCount(state,data.id)}</sapn></div>
+                }
+                {
                     quantityCount(state,data.id) === 1 &&
-                    <button onClick={()=>dispatch({type:"Remove",payload:data})}>REMOVE</button>
+                    <button onClick={()=>dispatch({type:"Remove",payload:data})} style={{width:"30px"}}>R</button>
                 }
                 {
                      quantityCount(state,data.id) > 1 &&
-                     <button onClick={()=>dispatch({type:"Decrease",payload:data})}>-</button>
+                     <button onClick={()=>dispatch({type:"Decrease",payload:data})} style={{width:"30px"}}>-</button>
                 }
             </div>
         </div>
