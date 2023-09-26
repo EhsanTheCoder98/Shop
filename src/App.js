@@ -1,14 +1,14 @@
-import React from 'react';
-import {Route , Routes ,Navigate} from "react-router-dom";
-import "./App.css" ;
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import "./App.css";
 
 // context
-import ApiContext from './Context/ApiContext';
-import Cartcontext from './Context/Cartcontext';
+import ApiContext from "./Context/ApiContext";
+import Cartcontext from "./Context/Cartcontext";
 
 // Components
-import Shop from './Components/Shop';
-import Productdetails from './Components/Productdetails';
+import Shop from "./Components/Shop";
+import Productdetails from "./Components/Productdetails";
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/products" element={<Shop />} />
           <Route path="/products/:id" element={<Productdetails />} />
-          <Route path="/*" element={<Navigate to="/products"/>} />
+          <Route path="/*" element={<Navigate to="/products" />} />
         </Routes>
       </Cartcontext>
     </ApiContext>
