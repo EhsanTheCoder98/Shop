@@ -26,7 +26,8 @@ const reducer = (state,action) => {
            return{
             ...state,
             selectedItems:[...state.selectedItems],
-            ...sumItems(state.selectedItems)
+            ...sumItems(state.selectedItems),
+            checkout:false,
            }
         case"Increase":
            const indexI = state.selectedItems.findIndex(
@@ -35,7 +36,8 @@ const reducer = (state,action) => {
            state.selectedItems[indexI].quantity++
            return{
             ...state,
-            ...sumItems(state.selectedItems)
+            ...sumItems(state.selectedItems),
+            checkout:false,
            }
         case"Decrease":
             const indexD = state.selectedItems.findIndex(
@@ -44,15 +46,26 @@ const reducer = (state,action) => {
             state.selectedItems[indexD].quantity--
             return{
                 ...state,
-            ...sumItems(state.selectedItems)
+            ...sumItems(state.selectedItems),
+            checkout:false,
             }
         case"Remove":
             const newSelected = state.selectedItems.filter(item => item.id !== action.payload.id);
             state.selectedItems = [...newSelected];
             return{
                 ...state,
-            ...sumItems(state.selectedItems)
+            ...sumItems(state.selectedItems),
+            checkout:false,
             }
+        case"checkout":
+        return{
+            ...state.selectedItems = {
+                selectedItems : [] ,
+                itemsCounter : 0,
+                totalPrice: 0,
+                checkout:true,
+            }  
+        }  
         default:
             return state;
     }
