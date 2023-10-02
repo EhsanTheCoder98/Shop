@@ -16,7 +16,7 @@ const Cart = () => {
                 state.checkout ? <h3>Checkedout Successfully!</h3>
                 : 
                 <div className={styles.container}>
-                <span>Your Total Price Is: {state.totalPrice}</span>
+                <span>Your Total Price Is: {state.totalPrice}$</span>
                 <button onClick={()=>dispatch({type:"checkout"})}>Wanna checkout?</button>
             </div>
             }
