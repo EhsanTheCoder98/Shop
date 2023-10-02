@@ -2,6 +2,15 @@ import React , {createContext, useReducer} from 'react';
 
 const initialState = {
     selectedItems : [] ,
+    itemsCounter : 0,
+    totalPrice: 0,
+    checkout:false,
+}
+
+const sumItems = (item) => {
+    const itemsCounter = item.reduce((total,product)=>total+ product.quantity,0);
+    const totalPrice = item.reduce((total,product)=>total + product.price*product.quantity,0).toFixed(2);
+    return{itemsCounter,totalPrice}
 }
 
 const reducer = (state,action) => {
@@ -16,7 +25,8 @@ const reducer = (state,action) => {
            }
            return{
             ...state,
-            selectedItems:[...state.selectedItems]
+            selectedItems:[...state.selectedItems],
+            ...sumItems(state.selectedItems)
            }
         case"Increase":
            const indexI = state.selectedItems.findIndex(
@@ -25,6 +35,7 @@ const reducer = (state,action) => {
            state.selectedItems[indexI].quantity++
            return{
             ...state,
+            ...sumItems(state.selectedItems)
            }
         case"Decrease":
             const indexD = state.selectedItems.findIndex(
@@ -33,12 +44,14 @@ const reducer = (state,action) => {
             state.selectedItems[indexD].quantity--
             return{
                 ...state,
+            ...sumItems(state.selectedItems)
             }
         case"Remove":
             const newSelected = state.selectedItems.filter(item => item.id !== action.payload.id);
             state.selectedItems = [...newSelected];
             return{
-                ...state
+                ...state,
+            ...sumItems(state.selectedItems)
             }
         default:
             return state;
