@@ -7,6 +7,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
 }
 .container button {
     width: fit-content;
