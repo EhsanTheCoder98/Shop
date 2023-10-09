@@ -46,3 +46,13 @@
     background-color: rgba(0, 255, 255, 0.916);
 }
 
+@media(max-width:940px){
+    .container{
+        flex-direction: column;
+    }
+    .rightContainer{
+        margin: 30px auto;
+        border-top: 4px solid black;
+        border-radius: 10px;
+    }
+}
