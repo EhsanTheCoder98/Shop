@@ -59,3 +59,18 @@
     padding: 3px;
     border-radius: 5px;
 }
+
+@media(max-width:390px){
+    .container{
+        user-select: none;
+    }
+    .container:hover{
+        background-color: #fff;
+    }
+    .container a:hover {
+        width: none;
+    }
+    .buttonContainer button:hover{
+        background-color: rgba(0, 255, 255, 0.599);
+    }
+}
