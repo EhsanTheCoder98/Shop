@@ -25,12 +25,19 @@
 @media(max-width:940px){
     .container{
         flex-direction: column;
+        margin-top: 80px;
     }
 }
 
-@media(max-width:360px){
+@media(max-width:390px){
     .container img{
         width: 150px;
         height: 150px;
+    }
+    .container span{
+        font-size: .8rem;
+    }
+    .container h1{
+        font-size:1.4rem;
     }
 }
