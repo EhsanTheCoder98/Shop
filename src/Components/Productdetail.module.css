@@ -27,3 +27,10 @@
         flex-direction: column;
     }
 }
+
+@media(max-width:360px){
+    .container img{
+        width: 150px;
+        height: 150px;
+    }
+}
